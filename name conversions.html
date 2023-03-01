@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+ <title>Currency Conversions</title>
+<body>
+
+<h2>Nicholas Taylor shows currency conversions</h2>
+
+<form>
+    <label for="baseAmt">Enter base amount</label>
+    <input type ="number" id="baseAmt" name="baseAmt" value=50> <br>
+
+    <label for="conversion">Enter the conversion rate</label>
+    <input type ="number" id="conversion" name="conversion" value=35> <br>
+
+    <input type="button" onclick="convert()" value="Show conversions">
+</form>
+
+
+<p id="result">Conversions are: </p>
+
+<script> 
+
+function convert(){
+    console.log("Getting form values")
+    baseVal = document.getElementById("baseAmt").value
+    conVal = document.getElementById("conversion").value
+    toShow = ""
+    mul = 1
+    for (let i = 0; i < 5; i++){
+        document.getElementById("result").append(baseVal*mul+" is "+baseVal*conVal*mul+"; ")
+        mul = mul * 2
+    }
+}
+</script>
+
+</body>
+</html> 
