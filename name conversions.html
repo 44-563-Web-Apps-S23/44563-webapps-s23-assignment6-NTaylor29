@@ -15,23 +15,64 @@
     <input type="button" onclick="convert()" value="Show conversions">
 </form>
 
+<p id="result">Conversions are:</p>
 
-<p id="result">Conversions are: </p>
+<form>
+    <input type="radio" id="avg" value="mean" onclick="chooseOp()">
+    <label for="avg">average</label></br>
+
+    <input type="radio" id="max" value="maximum" onclick="chooseOp()">
+    <label for="max">max</label></br>
+
+    <input type="radio" id="min" value="minimum" onclick="chooseOp()">
+    <label for="min">minimum</label></br>
+</form>
+
+<p id="result2"></p>
 
 <script> 
-
-function convert(){
-    console.log("Getting form values")
-    baseVal = document.getElementById("baseAmt").value
-    conVal = document.getElementById("conversion").value
-    toShow = ""
-    mul = 1
-    for (let i = 0; i < 5; i++){
-        document.getElementById("result").append(baseVal*mul+" is "+baseVal*conVal*mul+"; ")
-        mul = mul * 2
+    function convert(){
+        console.log("Getting form values")
+        baseVal = document.getElementById("baseAmt").value
+        conVal = document.getElementById("conversion").value
+        out = document.getElementById("result")
+        let toShow = ""
+        mul = 1
+        for (let i = 0; i < 5; i++){
+            toShow = toShow + baseVal*mul+" is "+baseVal*conVal*mul+"; "
+            mul = mul * 2
+        }
+        result = "Conversions are:"
+        out.innerHTML = result.concat(" "+ toShow)
     }
-}
 </script>
 
+<script>
+    function chooseOP(){
+        baseVal = document.getElementById("baseAmt").value
+        conVal = document.getElementById("conversion").value
+        avgOpt = document.getElementById("avg").checked
+        maxOpt = document.getElementById("max").checked
+        minOpt = document.getElementById("min").checked
+        out = document.getElementById("result2")
+        if(avgOpt == true){
+            out.innerHTML = "avg of "+baseVal+" and "+conVal+" is "+baseVal/conVal
+        }
+        if(maxOpt == true){
+            if(baseVal > minVal){
+                out.innerHTML = "max of "+baseVal+" and "+conVal+" is "+baseVal
+            } else {
+                out.innerHTML = "max of "+baseVal+" and "+conVal+" is "+conVal
+            }
+        }
+        if(minOpt == true){
+            if(baseVal > conVal){
+                out.innerHTML = "min of "+baseVal+" and "+conVal+" is "+conVal
+            } else{
+                out.innerHTML = "min of "+baseVal+" and "+conVal+" is "+baseVal
+            }
+        }
+    }
+</script>
 </body>
 </html> 

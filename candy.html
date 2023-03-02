@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<title>Picking candy</title>
+<h2>Nicholas Taylor chooses candy</h2>
+
+<form>
+    <label for="candy1">Dark Chocolate</label>
+    <input type ="checkbox" id="candy1" value="true"> <br>
+
+    <label for="candy2">Nuts</label>
+    <input type ="checkbox" id="candy2" value="true"> <br>
+
+    <label for="candy3">Chewy</label>
+    <input type ="checkbox" id="candy3" value="false"> <br>
+
+    <input type="button" onclick="selectBox()" value="Select a box">
+</form>
+
+<p id="result"></p>
+
+<script>
+    my_candy_box = {}
+    function selectBox (){
+        my_candy_box = {}
+        dark = document.getElementById("candy1").checked
+        nuts = document.getElementById("candy2").checked
+        chewy = document.getElementById("candy3").checked
+        out = document.getElementById("result")
+        my_candy_box["dark"] = dark
+        my_candy_box["nuts"] = nuts
+        my_candy_box["chewy"] = chewy
+        out.innerHTML = Object.values(my_candy_box)
+    }
+</script>
+
+</body>
+</html> 
